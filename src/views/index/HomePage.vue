@@ -1,46 +1,25 @@
 <template>
-    <div class="index">
-
+    <div class="homepage-wrappe">
         <h1>
-            homepage
+            {{title}}
         </h1>
     </div>
 </template>
 <script>
     export default {
-        methods: {
-            handleStart() {
-                this.$Modal.info({
-                    title: 'Bravo',
-                    content: 'Now, enjoy the convenience of iView.'
-                });
+        data() {
+            return {
+                title: '首页'
             }
-        }
+        },
+        methods: {}
     }
 </script>
 <style scoped lang="less">
-    .index {
-        width: 100%;
+    .homepage-wrappe {
         position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        text-align: center;
-        h1 {
-            height: 150px;
-            img {
-                height: 100%;
-            }
-        }
-        h2 {
-            color: #666;
-            margin-bottom: 200px;
-            p {
-                margin: 0 0 50px;
-            }
-        }
-        .ivu-row-flex {
-            height: 100%;
-        }
+        width: 100%;
+        height: 100%;
+        background-color: #f5f5f5;
     }
 </style>

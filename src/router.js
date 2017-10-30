@@ -2,16 +2,16 @@ const routers = [
     {
         path: '/',
         meta: {
+            title: '登录'
+        },
+        component: (resolve) => require(['./views/index/Login.vue'], resolve)
+    },
+    {
+        path: '/homepage',
+        meta: {
             title: '首页'
         },
         component: (resolve) => require(['./views/index/HomePage.vue'], resolve)
-    },
-    {
-        path: '/login',
-        meta: {
-            title: '登录'
-        },
-        component: (resolve) => require(['./views/index/login.vue'], resolve)
     },
     {
         path: '/sign-in',

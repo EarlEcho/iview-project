@@ -2,13 +2,27 @@ const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
+function resolve(dir) {
+    return path.join(__dirname, '..', dir)
+}
+
+
 module.exports = {
     entry: {
         main: './src/main',
         vendors: './src/vendors'
     },
     output: {
-        path: path.join(__dirname, './dist')
+        path: path.join(__dirname, './dist'),
+        filename: '[name].js',
+        publicPath: '/dist/'
+    },
+    resolve: {
+        extensions: ['.js', '.vue', '.css', '.json'],
+        alias: {
+            'vue': 'vue/dist/vue.esm.js',
+            '@': resolve('src')
+        }
     },
     module: {
         rules: [
@@ -70,11 +84,5 @@ module.exports = {
                 loader: 'html-loader'
             }
         ]
-    },
-    resolve: {
-        extensions: ['.js', '.vue'],
-        alias: {
-            'vue': 'vue/dist/vue.esm.js'
-        }
     }
 };

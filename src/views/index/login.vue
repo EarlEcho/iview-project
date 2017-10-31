@@ -14,24 +14,30 @@
                         <FormItem>
                             <Button type="primary" @click="handleSubmit('submitLoginForm')">登录</Button>
                         </FormItem>
+                        <div class="other-action">
+                            <router-link to="/find-pwd">忘记密码</router-link>
+                        </div>
                     </Form>
-
                 </TabPane>
                 <TabPane label="注册" name="siginIn">
-                    <Form ref="submitSignForm" :model="submitSignForm" :rules="submitSignRule"
-                          class="login-form-box">
+                    <Form ref="submitSignForm" :model="submitSignForm" :rules="submitSignRule" class="sign-form-box"
+                    >
                         <FormItem prop="userName">
-                            <Input type="text" v-model="submitSignForm.userName" placeholder="用户名">
-                            </Input>
+                            <Input type="text" v-model="submitSignForm.userName" placeholder="用户名"></Input>
                         </FormItem>
                         <FormItem prop="mobile">
                             <Input type="text" v-model="submitSignForm.mobile" placeholder="手机号"></Input>
+                        </FormItem>
+                        <FormItem prop="verfiyCode">
+                            <Input type="text" v-model="submitSignForm.verfiyCode" placeholder="验证码">
+                            <Button slot="append">获取验证码</Button>
+                            </Input>
                         </FormItem>
                         <FormItem prop="pwd">
                             <Input type="password" v-model="submitSignForm.pwd" placeholder="密码"></Input>
                         </FormItem>
                         <FormItem>
-                            <Button type="primary" @click="handleSubmit('submitSignForm')">登录</Button>
+                            <Button type="primary" @click="handleSubmit('submitSignForm')">立即注册</Button>
                         </FormItem>
                     </Form>
                 </TabPane>
@@ -51,6 +57,7 @@
                 submitSignForm: {
                     userName: '',
                     mobile: '',
+                    verfiyCode: '',
                     pwd: ''
                 },
                 submitLoginRule: {
@@ -68,6 +75,9 @@
                     ],
                     mobile: [
                         {required: true, message: '请填写手机号', trigger: 'blur'}
+                    ],
+                    verfiyCode: [
+                        {required: true, message: '请填写验证码', trigger: 'blur'}
                     ],
                     pwd: [
                         {required: true, message: '请填写密码', trigger: 'blur'},
@@ -99,7 +109,7 @@
         bottom: 0;
         left: 0;
         text-align: center;
-
+        background-color: #fafafa;
         &:before {
             content: '';
             display: inline-block;
@@ -108,10 +118,11 @@
             margin-right: -0.25em;
         }
         .login-sign-box {
-            border: solid 1px #f5f5f5;
+            border: solid 1px #cfcbcb;
+            background-color: rgba(255, 255, 255, 0.5);
             border-radius: 6px;
             padding: 20px;
-            height: 500px;
+            height: 470px;
             display: inline-block;
             vertical-align: middle;
             width: 350px;
@@ -121,15 +132,23 @@
                 letter-spacing: 1px;
             }
         }
-        .login-form-box {
-            border-radius: 8px;
-            padding: 25px 15px 20px 15px;
+        .login-form-box, .sign-form-box {
+            padding: 20px 15px 20px 15px;
             .ivu-btn-primary {
                 width: 100%;
             }
         }
         .ivu-input-group {
             font-size: 16px;
+        }
+        .other-action {
+            text-align: left;
+        }
+        .sign-form-box {
+
+            .ivu-form-item {
+                margin-bottom: 20px;
+            }
         }
     }
 </style>

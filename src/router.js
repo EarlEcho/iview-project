@@ -19,6 +19,13 @@ const routers = [
             title: '用户注册'
         },
         component: (resolve) => require(['./views/index/SignIn.vue'], resolve)
+    },
+    {
+        path: '/find-pwd',
+        meta: {
+            title: '找回密码'
+        },
+        component: (resolve) => require(['./views/index/FindPwd.vue'], resolve)
     }
 ];
 export default routers;

@@ -20,8 +20,7 @@
                     </Form>
                 </TabPane>
                 <TabPane label="注册" name="siginIn">
-                    <Form ref="submitSignForm" :model="submitSignForm" :rules="submitSignRule" class="sign-form-box"
-                    >
+                    <Form ref="submitSignForm" :model="submitSignForm" :rules="submitSignRule" class="sign-form-box">
                         <FormItem prop="userName">
                             <Input type="text" v-model="submitSignForm.userName" placeholder="用户名"></Input>
                         </FormItem>
@@ -30,7 +29,10 @@
                         </FormItem>
                         <FormItem prop="verfiyCode">
                             <Input type="text" v-model="submitSignForm.verfiyCode" placeholder="验证码">
-                            <Button slot="append">获取验证码</Button>
+                            <!--<Button slot="append">获取验证码</Button>-->
+
+                            <ls-msg-send-btn code-url="/" :mobile="submitSignForm.verfiyCode"></ls-msg-send-btn>
+
                             </Input>
                         </FormItem>
                         <FormItem prop="pwd">
@@ -43,9 +45,13 @@
                 </TabPane>
             </Tabs>
         </div>
+        <div class="index-copyright-info">
+            <p>版权信息 </p>
+        </div>
     </div>
 </template>
 <script>
+    import LsMsgSendBtn from '../../components/MsgSendBtn'
 
     export default {
         data() {
@@ -131,6 +137,11 @@
                 font-size: 15px !important;
                 letter-spacing: 1px;
             }
+        }
+        .index-copyright-info {
+            display: block;
+            border: solid 1px #cfcbcb;
+
         }
         .login-form-box, .sign-form-box {
             padding: 20px 15px 20px 15px;
